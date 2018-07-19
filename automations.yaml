@@ -38,11 +38,6 @@
         - condition: time
           after: '7:00'
           before: '23:59'
-        - condition: state
-          entity_id:  binary_sensor.motion_sensor_158d000224883c
-          state: 'off'
-          for:
-            seconds: 2
         - condition: or
           conditions:
             - condition: state
