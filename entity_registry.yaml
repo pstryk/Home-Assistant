@@ -1,0 +1,40 @@
+media_player.family_room_speaker:
+  config_entry_id: 10028800eb1e4d9c8d61b553bb91949f
+  name:
+  platform: cast
+  unique_id: ebfd71fe-2cd6-e0fb-08c5-b29e6517f0db
+media_player.tv_ue40es6100:
+  config_entry_id:
+  name:
+  platform: plex
+  unique_id: 7xcb3exscpkgw
+sensor.humidity_158d000208ffe0:
+  config_entry_id:
+  name: Humidity1
+  platform: xiaomi_aqara
+  unique_id: humidity158d000208ffe0
+sensor.illumination_7811dcb7d8e8:
+  config_entry_id:
+  name: Illumination1
+  platform: xiaomi_aqara
+  unique_id: illumination7811dcb7d8e8
+sensor.temperature_158d000208ffe0:
+  config_entry_id:
+  name: Temperature1
+  platform: xiaomi_aqara
+  unique_id: temperature158d000208ffe0
+light.gateway_light_7811dcb7d8e8:
+  config_entry_id:
+  name: Light1
+  platform: xiaomi_aqara
+  unique_id: rgb7811dcb7d8e8
+binary_sensor.door_window_sensor_158d000275eb5b:
+  config_entry_id:
+  name: Door1
+  platform: xiaomi_aqara
+  unique_id: status158d000275eb5b
+binary_sensor.motion_sensor_158d000224883c:
+  config_entry_id:
+  name: Motion1
+  platform: xiaomi_aqara
+  unique_id: status158d000224883c

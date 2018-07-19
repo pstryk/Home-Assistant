@@ -1,0 +1,105 @@
+- id: Rainy_day
+  alias: Rainy Day
+  trigger:
+    platform: state
+    entity_id: sensor.precip_intensity
+    to: 'rain'
+  condition:
+    - condition: and
+      conditions:
+        - condition: time
+          after: '7:00'
+          before: '22:00'
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: device_tracker.redmi_redmi
+              state: 'home'
+            - condition: state
+              entity_id: device_tracker.aga_aga
+              state: 'home' 
+  action:
+    - service: tts.google_say
+      entity_id: media_player.family_room_speaker
+      data_template:
+        message: >
+          Looks like it's going to rain
+
+- id: Welcome home
+  alias: Welcome home
+  trigger: 
+    platform: state
+    entity_id: binary_sensor.door_window_sensor_158d000275eb5b
+    from: 'off'
+    to: 'on'  
+  condition:
+    - condition: and
+      conditions: 
+        - condition: time
+          after: '7:00'
+          before: '23:59'
+        - condition: state
+          entity_id: binary_sensor.motion_sensor_158d000224883c
+          state: 'on'
+          for:
+            seconds: 3
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: device_tracker.redmi_redmi
+              state: 'home'
+            - condition: state
+              entity_id: device_tracker.aga_aga
+              state: 'home'
+  action:
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.family_room_speaker
+        volume_level: 1.00
+    - service: tts.google_say
+      entity_id: media_player.family_room_speaker
+      data_template:
+        message: >
+          Welcome home. Current temperature is {{ states('sensor.temperature_158d000208ffe0') }} degrees, with humidity {{states('sensor.humidity_158d000208ffe0') }} percent.
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.family_room_speaker
+        volume_level: 0.60
+    - service: light.turn_on
+      entity_id: light.gateway_light_7811dcb7d8e8
+    - condition: template
+      value_template: '{{ states.sensor.sensor.illumination_7811dcb7d8e8 < 200 }}'
+
+- id: Turn halway light off
+  alias: Turn halway light off      
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d000275eb5b
+      from: 'on'
+      to: 'off'
+      for:
+        minutes: 5
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d000224883c
+      from: 'on'
+      to: 'off'
+      for:
+        minutes: 5
+  action:
+    - service: light.turn_off
+      entity_id: light.gateway_light_7811dcb7d8e8
+
+- id: Turn halway light on
+  alias: Turn halway light on
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d000224883c
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.illumination_7811dcb7d8e8
+    below: 200
+  action:
+    - service: light.turn_on
+      entity_id: light.gateway_light_7811dcb7d8e8 
