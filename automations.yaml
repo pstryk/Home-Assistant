@@ -60,10 +60,10 @@
       data_template:
         entity_id: media_player.family_room_speaker
         volume_level: 0.60
-    - service: light.turn_on
-      entity_id: light.gateway_light_7811dcb7d8e8
     - condition: template
       value_template: '{{ states.sensor.sensor.illumination_7811dcb7d8e8 < 200 }}'
+    - service: light.turn_on
+      entity_id: light.gateway_light_7811dcb7d8e8
 
 - id: Turn halway light off
   alias: Turn halway light off      
@@ -73,13 +73,13 @@
       from: 'on'
       to: 'off'
       for:
-        minutes: 5
+        minutes: 1
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d000224883c
       from: 'on'
       to: 'off'
       for:
-        minutes: 5
+        minutes: 1
   action:
     - service: light.turn_off
       entity_id: light.gateway_light_7811dcb7d8e8
