@@ -79,7 +79,7 @@
       from: 'on'
       to: 'off'
       for:
-        minutes: 1
+        seconds: 30
   action:
     - service: light.turn_off
       entity_id: light.gateway_light_7811dcb7d8e8
