@@ -38,3 +38,18 @@ binary_sensor.motion_sensor_158d000224883c:
   name: Motion1
   platform: xiaomi_aqara
   unique_id: status158d000224883c
+media_player.chrome:
+  config_entry_id:
+  name:
+  platform: plex
+  unique_id: jgj43l46uqcd390qu7fcp0rj
+media_player.my_smt805:
+  config_entry_id:
+  name:
+  platform: plex
+  unique_id: a816ffcfaff1b6da-com-plexapp-android
+media_player.chrome_2:
+  config_entry_id:
+  name:
+  platform: plex
+  unique_id: ifxn1y4foxj9u6lugp798o09
