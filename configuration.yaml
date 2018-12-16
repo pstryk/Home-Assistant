@@ -58,11 +58,6 @@ sun:
 # Weather prediction
 sensor:
   - platform: yr
-  - platform: radarr
-    api_key: !secret radarr_api_key
-    host: 192.168.0.10
-    urlbase: /radarr
-    days: 7
 
 # Text to speech
 tts:
