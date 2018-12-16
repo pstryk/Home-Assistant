@@ -73,6 +73,7 @@ mqtt:
   keepalive: 60
   username: home
   password: !secret mqtt_pass
+  certificate: auto
 
 weather:
   - platform: darksky
