@@ -37,7 +37,7 @@
       conditions: 
         - condition: time
           after: '7:00'
-          before: '23:59'
+          before: '22:30'
         - condition: or
           conditions:
             - condition: state
@@ -60,8 +60,6 @@
       data_template:
         entity_id: media_player.family_room_speaker
         volume_level: 0.60
-    - condition: template
-      value_template: '{{ states.sensor.sensor.illumination_7811dcb7d8e8 < 200 }}'
     - service: light.turn_on
       entity_id: light.gateway_light_7811dcb7d8e8
 
@@ -97,4 +95,31 @@
     below: 150
   action:
     - service: light.turn_on
-      entity_id: light.gateway_light_7811dcb7d8e8 
+      entity_id: light.gateway_light_7811dcb7d8e8
+
+- id: Alarm
+  alias: Alarm
+  trigger:
+    platform: state
+    entity_id: binary_sensor.door_window_sensor_158d000275eb5b 
+    from: 'off'
+    to: 'on'
+  action:
+    - service: notify.push
+      data:
+        title: "There is somebody in the house"
+        message: "There is somebody in the house"
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.family_room_speaker
+        volume_level: 1.00
+    - service: tts.google_say
+      entity_id: media_player.family_room_speaker
+      data_template:
+        message: >
+          ALARM ! ALARM !
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.family_room_speaker
+        volume_level: 0.60
+

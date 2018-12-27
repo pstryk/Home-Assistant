@@ -91,14 +91,18 @@ device_tracker:
 #      - 192.168.0.20
 #      - 192.168.0.45
   - platform: owntracks
-    max_gps_accuracy: 100
+    max_gps_accuracy: 50
 
 xiaomi_aqara:
   discovery_retry: 5
   gateways:
     - key: q7fv3m3dpm8vg1w5
 #    - mac: D4:25:8B:26:AF:48
-  
+
+notify:
+  - name: push
+    platform: pushbullet
+    api_key: !secret pushbullet_api
 
 group: !include groups.yaml
 automation: !include automations.yaml
