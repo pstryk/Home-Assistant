@@ -117,9 +117,34 @@
       entity_id: media_player.family_room_speaker
       data_template:
         message: >
-          ALARM ! ALARM !
+          ALARM ! ALARM ! ALARM ! ALARM ! ALARM !
     - service: media_player.volume_set
       data_template:
         entity_id: media_player.family_room_speaker
         volume_level: 0.60
 
+- id: Wife home
+  alias: Wife home
+  trigger:
+    platform: zone
+    entity_id: device_tracker.aga_aga
+    zone: zone.home
+    event: enter
+  action:
+    - service: notify.push
+      data:
+        title: "Wife home"
+        message: "Wife is home"
+
+- id: Wife away
+  alias: Wife away
+  trigger:
+    platform: zone
+    entity_id: device_tracker.aga_aga
+    zone: zone.home
+    event: leave
+  action:
+    - service: notify.push
+      data:
+        title: "Wife away"
+        message: "Wife is away"

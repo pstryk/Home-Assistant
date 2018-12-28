@@ -104,6 +104,20 @@ notify:
     platform: pushbullet
     api_key: !secret pushbullet_api
 
+google_assistant:
+  project_id: homeassistnat
+  api_key: !secret google_api
+  exposed_domains:
+    - switch
+    - light
+    - group
+  entity_config:
+    light.gateway_light_7811dcb7d8e8:
+      name: Hallway light
+      aliases:
+        - Hallway_light
+
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
