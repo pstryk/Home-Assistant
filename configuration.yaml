@@ -58,6 +58,11 @@ sun:
 # Weather prediction
 sensor:
   - platform: yr
+  - platform: trakt
+    id: '90dd15b6669e979ec5c28ef12f91628026c2c87bb79ce26ec8cc98bf003cd6c9'
+    secret: '09160782755bf3dd577c6330ad1e7380822761afab50b3159604d36dc5796876'
+    username: pstryku
+    days: 7
 
 # Text to speech
 tts:
@@ -115,8 +120,7 @@ google_assistant:
     light.gateway_light_7811dcb7d8e8:
       name: Hallway light
       aliases:
-        - Hallway_light
-
+        - Hallway light
 
 group: !include groups.yaml
 automation: !include automations.yaml
